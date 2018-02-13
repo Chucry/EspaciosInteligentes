@@ -166,6 +166,10 @@
     <Compile Include="Migrations\201802122046235_InitialModel.Designer.cs">
       <DependentUpon>201802122046235_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802130131139_ModifiedTerminationDateColumnInEmployeeTable.cs" />
+    <Compile Include="Migrations\201802130131139_ModifiedTerminationDateColumnInEmployeeTable.Designer.cs">
+      <DependentUpon>201802130131139_ModifiedTerminationDateColumnInEmployeeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Client.cs" />
@@ -208,7 +212,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Employees\NewEmployee.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
     <Content Include="Views\Employees\Delete.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />
@@ -235,6 +238,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802122046235_InitialModel.resx">
       <DependentUpon>201802122046235_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802130131139_ModifiedTerminationDateColumnInEmployeeTable.resx">
+      <DependentUpon>201802130131139_ModifiedTerminationDateColumnInEmployeeTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
