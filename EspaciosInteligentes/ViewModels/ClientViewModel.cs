@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using EspaciosInteligentes.Models;
 
-namespace EspaciosInteligentes.Models
+namespace EspaciosInteligentes.ViewModels
 {
-    public class Client
+    public class ClientViewModel
     {
         public int Id { get; set; }
 
@@ -28,6 +33,6 @@ namespace EspaciosInteligentes.Models
         [DisplayName("Ciudad")]
         public City City { get; set; }
 
-        public int CityId { get; set; }
+        public IList<SelectListItem> CityList { get; set; }
     }
 }
