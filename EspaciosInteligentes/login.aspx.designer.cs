@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EspaciosInteligentes.Views {
+namespace EspaciosInteligentes {
     
     
     public partial class login {
