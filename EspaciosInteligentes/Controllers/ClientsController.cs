@@ -18,13 +18,13 @@ namespace EspaciosInteligentes.Controllers
         private EIContext db = new EIContext();
 
         // GET: Clients
-        public ActionResult Index()
+        public ActionResult Index() //éste método retorna la vista con la lista de clientes actualmente en la base de datos
         {
             return View(db.Clients.ToList());
         }
 
         // GET: Clients/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id) //éste método retorna una vista de detalle con el cliente recibiendo como parámetro el id del cliente
         {
             if (id == null)
             {
@@ -36,13 +36,13 @@ namespace EspaciosInteligentes.Controllers
                 return HttpNotFound();
             }
 
-            client.City = db.Cities.First(c => c.Id == client.CityId);
+            client.City = db.Cities.First(c => c.Id == client.CityId); //aquí carga la ciudad del cliente para mostrarla en el dropdownlist de ciudad
             
-            return View(client);
+            return View(client); //aquí se manda a llamar la vista y se le asigna el cliente que es su modelo
         }
 
         // GET: Clients/Create
-        public ActionResult Create()
+        public ActionResult Create() //éste método manda a llamar la vista para crear un cliente nuevo
         {
             var vm = new ClientViewModel()
             {
@@ -53,8 +53,7 @@ namespace EspaciosInteligentes.Controllers
         }
 
         // POST: Clients/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //éste método toma los datos de la forma de creación para crear un registro en la base de datos
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,LastName,Email,Password,BirthDate,ContactNumber")] ClientViewModel clientVM, FormCollection form)
@@ -69,7 +68,7 @@ namespace EspaciosInteligentes.Controllers
 
             var mapper = new ClientMapper();
 
-            var client = mapper.ClientViewModelToClient(clientVM);
+            var client = mapper.ClientViewModelToClient(clientVM); //éste método se utiliza para convertir el objeto ClientViewModel en un objeto Client
             
             if (ModelState.IsValid)
             {
@@ -82,7 +81,7 @@ namespace EspaciosInteligentes.Controllers
         }
 
         // GET: Clients/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id) //éste método carga la vista de edición de un cliente existente
         {
             if (id == null)
             {
@@ -105,8 +104,7 @@ namespace EspaciosInteligentes.Controllers
         }
 
         // POST: Clients/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        //éste método guarda los cambios de un cliente existente tomando los datos de la forma
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,LastName,Email,Password,BirthDate,ContactNumber")] ClientViewModel clientVM, FormCollection form)
@@ -133,7 +131,7 @@ namespace EspaciosInteligentes.Controllers
         }
 
         // GET: Clients/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id) //éste método elimina el registro de un cliente y recibe como parámetro el id del cliente a eliminar
         {
             if (id == null)
             {
@@ -150,7 +148,7 @@ namespace EspaciosInteligentes.Controllers
         // POST: Clients/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id) //éste método confirma si se va a eliminar el cliente, una vez que el usuario así lo decida
         {
             Client client = db.Clients.Find(id);
             db.Clients.Remove(client);
@@ -167,7 +165,7 @@ namespace EspaciosInteligentes.Controllers
             base.Dispose(disposing);
         }
 
-        public List<SelectListItem> GetCitySelectList(int id)
+        public List<SelectListItem> GetCitySelectList(int id) //éste método carga las ciudades de la base de datos, en caso de recibir un parámetro distinto a cero utiliza el id para determinar qué ciudad debe estar seleccionada
         {
             var selectList = new List<SelectListItem>();
 
